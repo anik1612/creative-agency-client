@@ -5,7 +5,7 @@ import brandImg from '../../images/logos/logo.png'
 const Header = () => {
     return (
             <nav className="navbar navbar-expand-lg navbar-light py-3 px-md-0 px-3 ">
-                <Link className="navbar-brand">
+                <Link to='/home' className="navbar-brand">
                     <img style={{height: '50px'}} src={brandImg} alt="brand-img"/>
                 </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@ const Header = () => {
                             <Link className="nav-link text-dark">Contant Us</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link btn btn-dark text-white px-4">Login</Link>
+                            <Link to='/login' className="nav-link btn btn-dark text-white px-4">Login</Link>
                         </li>
                     </ul>
                 </div>
