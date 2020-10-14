@@ -10,8 +10,8 @@ import NoMatch from './pages/NoMatch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login/Login';
 import useLocalStorageState from 'use-local-storage-state/dist';
-import Customer from './pages/Customer/Customer';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 export const SelectedServiceContext = createContext([])
 export const UserContext = createContext([])
@@ -36,8 +36,11 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
-            <PrivateRoute path="/customer">
-              <Customer />
+            <PrivateRoute path="/dashboard">
+              <Dashboard />
+            </PrivateRoute>
+            <PrivateRoute path="/admin">
+              <Dashboard />
             </PrivateRoute>
             <Route exact path="/">
               <Home />

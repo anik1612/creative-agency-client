@@ -5,7 +5,7 @@ import { SelectedServiceContext } from '../../App';
 import './ServiceTask.css'
 
 const ServiceTask = ({ service }) => {
-    const [selectedService, setSelectedService] = useContext(SelectedServiceContext)
+    const [selectedService, setSelectedService] = useContext(SelectedServiceContext);
 
     //animation 
     const ref = useRef();
@@ -62,7 +62,7 @@ const ServiceTask = ({ service }) => {
                         )
                     }}
                 >
-                    <Link onClick={() => setSelectedService(service)} class="card py-3 px-1 mb-3 border-0" style={{ width: '18rem', textDecoration: 'none' }}>
+                    <Link to='/dashboard' onClick={() => setSelectedService(service)} class="card py-3 px-1 mb-3 border-0" style={{ width: '18rem', textDecoration: 'none' }}>
                         <img style={{ width: '70px' }} src={service.src} class="mx-auto" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title text-center">{service.taskName}</h5>

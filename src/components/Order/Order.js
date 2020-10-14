@@ -29,24 +29,29 @@ const Order = () => {
     };
 
     return (
-        <div className='row'>
+        <div className='row p-5'>
             <div className='col-md-8'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input className='form-control mb-2' type="text" placeholder="First name / company's name" defaultValue={loggedInUser.name} name="name" ref={register({ required: true })} />
                     <p className='text-danger mb-0'>{errors.name && '* This field is required'}</p>
+
                     <input className='form-control mb-2' type="email" placeholder="Your email address" defaultValue={loggedInUser.email} name="email" ref={register({
                         required: true, maxLength: 100, pattern: /^\S+@\S+\.\S+$/
                     })} />
                     <p className='text-danger mb-0'>{errors.email && '* This field is required'}</p>
+
                     <input className='form-control mb-2' type="text" placeholder="Service" defaultValue={selectedService.taskName} name="service" ref={register({ required: true })} />
                     <p className='text-danger mb-0'>{errors.service && '* This field is required'}</p>
+                    
                     <textarea className='form-control mb-2' rows="5" placeholder="Project Details" name="projectDetails" ref={register({ required: true })} />
-                    <div className='row'>
-                        <div className='col-md-6'>
+                    
+                    <div className='row d-flex justify-content-between'>
+                        <div className='col-md-6 px-0'>
                             <input className='form-control mb-2' type="text" placeholder="Price" name="price" ref={register({ required: true })} />
                             <p className='text-danger mb-0'>{errors.price && '* This field is required'}</p>
                         </div>
-                        <div className='col-md-6'>
+
+                        <div className='col-md-5 px-0'>
                             <div class="button-wrapper">
                                 <span class="label">
                                     <img src={uploadIcon} alt="upload-icon" /> Upload project File

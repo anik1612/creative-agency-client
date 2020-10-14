@@ -7,13 +7,7 @@ const Review = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     const { register, handleSubmit, errors } = useForm();
 
-    const randomPhoto = [
-        'https://i.ibb.co/rQVR3zn/customer-1.png',
-        'https://i.ibb.co/V9g32W2/customer-2.png',
-        'https://i.ibb.co/k11nnGg/customer-3.png'
-    ]  
-    const randomIndex = Math.floor(Math.random() * (3 - 0) + 0)
-    const src = randomPhoto[randomIndex]
+    const src = loggedInUser.image;
 
     const onSubmit = data => {
         fetch('http://localhost:5000/insertFeedback', {
@@ -33,7 +27,7 @@ const Review = () => {
 
     return (
         <div>
-            <div className='row'>
+            <div className='row p-5'>
                 <div className='col-md-8'>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
