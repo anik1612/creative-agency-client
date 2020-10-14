@@ -9,18 +9,21 @@ import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login/Login';
+import useLocalStorageState from 'use-local-storage-state/dist';
+import Customer from './pages/Customer/Customer';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export const SelectedServiceContext = createContext([])
 export const UserContext = createContext([])
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({
+  const [loggedInUser, setLoggedInUser] = useLocalStorageState('userInfo', {
     isSignedIn: false,
     name: '',
     email: '',
     image: ''
   })
-  const [selectedService, setSelectedService] = useState({})
+  const [selectedService, setSelectedService] = useLocalStorageState('selectedService', {})
 
   return (
     <SelectedServiceContext.Provider value={[selectedService, setSelectedService]}>
@@ -33,6 +36,9 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
+            <PrivateRoute path="/customer">
+              <Customer />
+            </PrivateRoute>
             <Route exact path="/">
               <Home />
             </Route>

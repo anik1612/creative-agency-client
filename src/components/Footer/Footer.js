@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css'
 import { useForm } from "react-hook-form";
+import swal from 'sweetalert';
 
 const praStyle = {
     color: 'rgba(0, 0, 0, 0.7);'
@@ -19,7 +20,7 @@ const Footer = () => {
         .then(res => res.json())
         .then(data => {
             if(data){
-                alert('your message send successfully')
+                swal("Thank You!", "You message send successfully!", "success");
             }
         })
     };
