@@ -12,7 +12,7 @@ const ClientFeedback = () => {
                 setFeedbacks(data)
                 setPreloader(false)
             })
-    })
+    }, [])
 
     //  const loadData = () => {
     //     fetch('http://localhost:5000/insertFeedback', {
@@ -32,7 +32,7 @@ const ClientFeedback = () => {
                     preloader && <Preloader />
                 }
                 {
-                    feedbacks.map(feedback => <FeedbackList feedback={feedback} />)
+                    feedbacks.map(feedback => <FeedbackList feedback={feedback} key={feedback._id} />)
                 }
             </div>
         </div>

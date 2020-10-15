@@ -62,11 +62,16 @@ const ServiceTask = ({ service }) => {
                         )
                     }}
                 >
-                    <Link to='/dashboard' onClick={() => setSelectedService(service)} class="card py-3 px-1 mb-3 border-0" style={{ width: '18rem', textDecoration: 'none' }}>
-                        <img style={{ width: '70px' }} src={service.src} class="mx-auto" alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title text-center">{service.taskName}</h5>
-                            <p class="card-text text-center">{service.description}</p>
+                    <Link to='/dashboard' onClick={() => setSelectedService(service)} className="card py-3 px-1 mb-3 border-0" style={{ width: '18rem', textDecoration: 'none' }}>
+                        {
+                            service.image ? <img style={{ width: '70px' }} className="mx-auto" src={`data:image/png;base64,${service.image.img}`} alt='service-task-img' />
+                                :
+                                <img style={{ width: '70px' }} className="img-fluid mb-3 mx-auto" src={`http://http://localhost:5000/${service.img}`} alt="" />
+                        }
+                        {/* <img style={{ width: '70px' }} src={service.src} className="mx-auto" alt="..." /> */}
+                        <div className="card-body">
+                            <h5 className="card-title text-center">{service.taskName}</h5>
+                            <p className="card-text text-center">{service.description}</p>
                         </div>
                     </Link>
                 </animated.div>

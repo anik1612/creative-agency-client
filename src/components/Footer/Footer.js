@@ -42,8 +42,8 @@ const Footer = () => {
                             <p className="text-danger">{errors.email && <span>* This field is required / Use Valid Email</span>}</p>
                             <input className='form-control mb-3' type="text" placeholder="Your name / company's name" name="name" ref={register({ required: true, maxLength: 100 })} />
                             <p className="text-danger">{errors.name && <span>* This field is required</span>}</p>
-                            <div class="form-group">
-                                <textarea class="form-control" placeholder="Your message" name='message' rows="7" ref={register({ required: true })}></textarea>
+                            <div className="form-group">
+                                <textarea className="form-control" placeholder="Your message" name='message' rows="7" ref={register({ required: true })}></textarea>
                             </div>
                             <p className="text-danger">{errors.message && <span>* This field is required</span>}</p>
                             <input className='btn btn-dark text-white px-4' type="submit" value='send' />

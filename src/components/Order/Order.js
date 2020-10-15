@@ -52,11 +52,11 @@ const Order = () => {
                         </div>
 
                         <div className='col-md-5 px-0'>
-                            <div class="button-wrapper">
-                                <span class="label">
+                            <div className="button-wrapper">
+                                <span className="label">
                                     <img src={uploadIcon} alt="upload-icon" /> Upload project File
                                 </span>
-                                <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File" />
+                                <input type="file" name="upload" id="upload" className="upload-box" placeholder="Upload File" />
                             </div>
                         </div>
                     </div>

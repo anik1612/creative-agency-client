@@ -13,16 +13,9 @@ const Services = () => {
             setAllService(data)
             setPreloader(false)
         })
-    })
-    // const loadData = () => {
-    //     fetch('http://localhost:5000/addService', {
-    //         method: 'POST',
-    //         headers: { 
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(allService)
-    //     })
-    // }
+    }, [])
+
+    console.log(allService)
 
     return (
         <div className='container'>
@@ -32,7 +25,7 @@ const Services = () => {
                 preloader && <Preloader />
             }
             {
-                allService.map(service => <ServiceTask service={service} />)
+                allService.map(service => <ServiceTask service={service} key={service._id} />)
             }
             </div>
         </div>

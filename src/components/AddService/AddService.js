@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 import uploadIcon from '../../images/logos/upload.png'
 
 const AddService = () => {
     const { register, handleSubmit, errors } = useForm();
+    const [file, setFile] = useState(null);
 
     const onSubmit = data => {
-        fetch('', {
+        const formData = new FormData();
+        formData.append('file', file)
+        formData.append('taskName', data.taskName)
+        formData.append('description', data.description)
+
+        fetch('http://localhost:5000/addService', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
+            body: formData
         })
             .then(res => res.json())
             .then(data => {
                 swal('Good Job', 'New service created successfully!', 'success')
             })
+            .catch(error => {
+                swal('Bad Request', 'Something went wrong', 'error');
+            })
     };
+
+    const handleFileChange = (e) => {
+        const newFile = e.target.files[0];
+        setFile(newFile);
+    }
 
     return (
         <div className='row p-5'>
@@ -32,11 +43,11 @@ const AddService = () => {
                 </div>
 
                 <div className='col-md-3' style={{ marginTop: '30px' }}>
-                    <div class="button-wrapper">
-                        <span class="label">
+                    <div className="button-wrapper">
+                        <span className="label">
                             <img src={uploadIcon} alt="upload-icon" /> Upload image
                         </span>
-                        <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File" ref={register({ required: true })} />
+                        <input type="file" onChange={handleFileChange} name="upload" id="upload" class="upload-box" placeholder="Upload File" ref={register({ required: true })} />
                         <p className='text-danger mb-0'>{errors.upload && '* This field is required'}</p>
                     </div>
                 </div>

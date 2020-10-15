@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 
 const MakeAdmin = () => {
     const { register, handleSubmit, errors } = useForm();
+
     const onSubmit = data => {
         fetch('http://localhost:5000/makeAdmin', {
             method: 'POST',
@@ -19,6 +20,7 @@ const MakeAdmin = () => {
                 }
             })
     };
+    
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
