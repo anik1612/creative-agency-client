@@ -6,7 +6,7 @@ const ClientFeedback = () => {
     const [preloader, setPreloader] = useState(true)
 
     useEffect(() => {
-        fetch('http://localhost:5000/feedbacks')
+        fetch('https://creative-agency-as.herokuapp.com/feedbacks')
             .then(res => res.json())
             .then(data => {
                 setFeedbacks(data)
@@ -15,7 +15,7 @@ const ClientFeedback = () => {
     }, [])
 
     //  const loadData = () => {
-    //     fetch('http://localhost:5000/insertFeedback', {
+    //     fetch('https://creative-agency-as.herokuapp.com/insertFeedback', {
     //         method: 'POST',
     //         headers: { 
     //             'Content-Type': 'application/json'

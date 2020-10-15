@@ -22,7 +22,7 @@ const Dashboard = () => {
     let history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin?email=' + loggedInUser.email)
+        fetch('https://creative-agency-as.herokuapp.com/isAdmin?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 if (data) {

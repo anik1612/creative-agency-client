@@ -9,7 +9,7 @@ const ServiceList = ({ isAdmin }) => {
     const [preloader, setPreloader] = useState(true)
 
     useEffect(() => {
-        fetch('http://localhost:5000/customerOrders?email=' + loggedInUser.email)
+        fetch('https://creative-agency-as.herokuapp.com/customerOrders?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 setPlacedOrders(data)

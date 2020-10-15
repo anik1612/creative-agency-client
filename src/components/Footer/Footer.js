@@ -10,7 +10,7 @@ const praStyle = {
 const Footer = () => {
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => {
-        fetch('http://localhost:5000/privateMessage', {
+        fetch('https://creative-agency-as.herokuapp.com/privateMessage', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

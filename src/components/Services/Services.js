@@ -7,7 +7,7 @@ const Services = () => {
     const [preloader, setPreloader] = useState(true)
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://creative-agency-as.herokuapp.com/services')
         .then(res => res.json())
         .then(data => {
             setAllService(data)

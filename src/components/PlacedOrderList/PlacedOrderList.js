@@ -19,7 +19,7 @@ const PlacedOrderList = ({ placedOrder }) => {
         const status = selectedOption;
         const data = { id, status }
 
-        fetch(`http://localhost:5000/update/${id}`, {
+        fetch(`https://creative-agency-as.herokuapp.com/update/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

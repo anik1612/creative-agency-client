@@ -10,7 +10,7 @@ const Review = () => {
     const src = loggedInUser.image;
 
     const onSubmit = data => {
-        fetch('http://localhost:5000/insertFeedback', {
+        fetch('https://creative-agency-as.herokuapp.com/insertFeedback', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

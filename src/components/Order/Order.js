@@ -13,7 +13,7 @@ const Order = () => {
 
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => {
-        fetch('http://localhost:5000/placeOrder', {
+        fetch('https://creative-agency-as.herokuapp.com/placeOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
