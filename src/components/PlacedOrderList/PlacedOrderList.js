@@ -6,7 +6,7 @@ const PlacedOrderList = ({ placedOrder }) => {
     const [selectedOption, setSelectedOption] = useState(placedOrder.status)
 
     console.log(selectedOption, placedOrder._id)
-    
+
     useEffect(() => {
         if (selectedOption === 'pending') {
             setColor('danger')
@@ -17,7 +17,7 @@ const PlacedOrderList = ({ placedOrder }) => {
         }
         const id = placedOrder._id;
         const status = selectedOption;
-        const data = {id, status}
+        const data = { id, status }
 
         fetch(`http://localhost:5000/update/${id}`, {
             method: 'PATCH',
@@ -26,12 +26,12 @@ const PlacedOrderList = ({ placedOrder }) => {
             },
             body: JSON.stringify(data)
         })
-        .then(res => res.json())
-        .then(resData =>{
-            if(resData){
-                swal('Update', 'Work status update successfully', 'success')
-            }
-        })
+            .then(res => res.json())
+            .then(resData => {
+                if (resData) {
+                    swal('Update', 'Work status update successfully', 'success')
+                }
+            })
     }, [selectedOption])
 
     return (
@@ -50,13 +50,13 @@ const PlacedOrderList = ({ placedOrder }) => {
             </div>
             <div className='col-md-1 p-0'>
                 <form>
-                    <select 
-                    value={selectedOption}
-                    onChange={e => setSelectedOption(e.target.value)}
-                    className={`text-${color} border-0`} name="status">
+                    <select
+                        value={selectedOption}
+                        onChange={e => setSelectedOption(e.target.value)}
+                        className={`text-${color} border-0`} name="status">
                         <option value="pending">pending</option>
                         <option value="on going">on going</option>
-                        <option value="done">done</option>       
+                        <option value="done">done</option>
                     </select>
                 </form>
             </div>

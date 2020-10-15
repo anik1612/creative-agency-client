@@ -18,19 +18,19 @@ const Dashboard = () => {
     const [isMakeAdmin, setIsMakeAdmin] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
     const [isAddService, setIsAddService] = useState(false)
-
+    let history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin?email='+loggedInUser.email)
+        fetch('http://localhost:5000/isAdmin?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 if (data) {
                     setIsAdmin(true)
+                    setIsServiceList(true)
+                    setIsOrder(false)
                 }
             })
-    })
-
-    let history = useHistory();
+    }, [])
 
     const handleOrder = () => {
         setIsOrder(true)
@@ -54,15 +54,15 @@ const Dashboard = () => {
         setIsOrder(false)
         setIsServiceList(false)
         setIsReview(true)
-        setIsAddService(false)
         setIsMakeAdmin(false)
+        setIsAddService(false)
         history.push(`/dashboard/${loggedInUser.name.split(' ')[0]}/review`)
     }
 
     const handleAdmin = () => {
         setIsOrder(false)
-        setIsServiceList(false)
         setIsReview(false)
+        setIsServiceList(false)
         setIsAddService(false)
         setIsMakeAdmin(true)
         history.push(`/admin/makeAdmin`)
@@ -70,16 +70,16 @@ const Dashboard = () => {
 
     const handleAddService = () => {
         setIsOrder(false)
-        setIsServiceList(false)
         setIsReview(false)
+        setIsServiceList(false)
         setIsAddService(true)
         setIsMakeAdmin(false)
-        history.push(`/admin/makeAdmin`)
+        history.push(`/admin/addService`)
     }
 
     return (
         <div className='dashboard-container'>
-            <div className='row px-5 pt-4'>
+            <div className='row px-5 pt-3 mt-3'>
                 <div className="col-md-2 d-flex flex-column">
                     <div>
                         <Link to='/home'>
@@ -89,13 +89,13 @@ const Dashboard = () => {
                     {/* customer portion */}
                     {!isAdmin && <div>
                         <div className="mt-5">
-                            <Link onClick={handleOrder} className='text-decoration-none text-dark ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faCartPlus} /> Order</Link>
+                            <Link onClick={handleOrder} className='text-decoration-none text-dark ml-3 mb-5 pb-5'><FontAwesomeIcon className="mr-1" icon={faCartPlus} /> Order</Link>
                         </div>
                         <div className='mt-2'>
-                            <Link onClick={handleServiceList} className='text-decoration-none text-dark ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faHdd} /> Service List</Link>
+                            <Link onClick={handleServiceList} className='text-decoration-none text-dark ml-3 mb-5 pb-5'><FontAwesomeIcon className="mr-1" icon={faHdd} /> Service List</Link>
                         </div>
                         <div onClick={handleReview} className='mt-2'>
-                            <Link className='text-decoration-none text-dark ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faCommentAlt} /> Review</Link>
+                            <Link className='text-decoration-none text-dark ml-3 mb-5 pb-5'><FontAwesomeIcon className="mr-1" icon={faCommentAlt} /> Review</Link>
                         </div>
                     </div>}
 
@@ -113,8 +113,8 @@ const Dashboard = () => {
                     </div>}
                 </div>
                 <div className="col-md-9">
-                    <div className='d-flex justify-content-between'>
-                        <div>
+                    <div className='d-flex justify-content-between align-items-center'>
+                        <div className='mt-2'>
                             <h4>{isOrder && 'Order'}
                                 {isServiceList && 'Service List'}
                                 {isReview && 'Review'}
@@ -128,16 +128,16 @@ const Dashboard = () => {
                                 <img style={{ height: '43px', borderRadius: '50%' }} src={loggedInUser.image} alt="" />
                             </div>
                             <div>
-                                <h6>{loggedInUser.name}</h6>
+                                <h6 className='mb-0'>{loggedInUser.name}</h6>
                             </div>
                         </div>
                     </div>
 
                     {/* conditional div render */}
-                    <div className="mt-5" style={{ backgroundColor: '#F4F7FC' }}>
+                    <div className="mt-4" style={{ backgroundColor: '#F4F7FC' }}>
                         {isOrder && <Order />}
-                        {!isAdmin && isServiceList && <ServiceList isAdmin={true}/>}
-                        {isAdmin && isServiceList && <ServiceList isAdmin={false}/>}
+                        {!isAdmin && isServiceList && <ServiceList isAdmin={true} />}
+                        {isAdmin && isServiceList && <ServiceList isAdmin={false} />}
                         {isReview && <Review />}
                         {isAddService && <AddService />}
                         {isMakeAdmin && <MakeAdmin />}

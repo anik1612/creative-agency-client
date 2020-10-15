@@ -18,7 +18,7 @@ const ServiceList = ({ isAdmin }) => {
     }, [])
 
     return (
-        <div className='row d-flex justify-content-between'>
+        <div className='row d-flex justify-content-center'>
             {
                 preloader && <Preloader />
             }
@@ -27,7 +27,7 @@ const ServiceList = ({ isAdmin }) => {
                     return (
                         <>
                             {/* customer portion */}
-                            {isAdmin && <div className='col-md-5 mb-3'>
+                            {isAdmin && <div className='col-md-5 mb-3 p-5'>
                                 <div className='bg-white py-2 px-4 border rounded'>
                                     <div className='d-flex justify-content-between align-items-center mb-3'>
                                         <div>
