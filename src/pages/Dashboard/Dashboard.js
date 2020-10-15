@@ -90,7 +90,7 @@ const Dashboard = () => {
                         <div className="mt-5">
                             <NavLink 
                             activeClassName='nav-active'
-                            to={`/dashboard/${loggedInUser.name.split(' ')[0]}/orders`} 
+                            to={`/dashboard/${loggedInUser.name.split(' ')[0]}/createOrder`} 
                             onClick={handleOrder} 
                             className='text-decoration-none text-success ml-3 mb-5 pb-5'>
                             <FontAwesomeIcon className="mr-1" icon={faCartPlus} /> Order</NavLink>

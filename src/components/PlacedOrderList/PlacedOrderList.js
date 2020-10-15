@@ -5,8 +5,6 @@ const PlacedOrderList = ({ placedOrder }) => {
     const [color, setColor] = useState('')
     const [selectedOption, setSelectedOption] = useState(placedOrder.status)
 
-    console.log(selectedOption, placedOrder._id)
-
     useEffect(() => {
         if (selectedOption === 'pending') {
             setColor('danger')
