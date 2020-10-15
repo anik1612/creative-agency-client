@@ -23,7 +23,7 @@ const Header = () => {
                             <Link to='/portfolio' className="nav-link text-dark">Our Portfolio</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to='/team' className="nav-link text-dark">Our Team</Link>
+                            <Link to='/dashboard' className="nav-link text-dark">Dashboard</Link>
                         </li>
                         <li className="nav-item text-white">
                             <Link to='/contact' className="nav-link text-dark">Contact Us</Link>

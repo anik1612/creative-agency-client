@@ -39,7 +39,7 @@ const Dashboard = () => {
         setIsReview(false)
         setIsMakeAdmin(false)
         setIsAddService(false)
-        history.push(`/dashboard/${loggedInUser.name.split(' ')[0]}/newOrders`)
+        history.push()
     }
 
     const handleServiceList = () => {
@@ -66,7 +66,6 @@ const Dashboard = () => {
         setIsServiceList(false)
         setIsAddService(false)
         setIsMakeAdmin(true)
-        history.push(`/dashboard/makeAdmin`)
     }
 
     const handleAddService = () => {
@@ -75,7 +74,6 @@ const Dashboard = () => {
         setIsServiceList(false)
         setIsAddService(true)
         setIsMakeAdmin(false)
-        history.push(`/dashboard/addService`)
     }
 
     return (
@@ -90,26 +88,43 @@ const Dashboard = () => {
                     {/* customer portion */}
                     {!isAdmin && <div>
                         <div className="mt-5">
-                            <Link onClick={handleOrder} className='text-decoration-none text-dark ml-3 mb-5 pb-5'><FontAwesomeIcon className="mr-1" icon={faCartPlus} /> Order</Link>
+                            <NavLink 
+                            activeClassName='nav-active'
+                            to={`/dashboard/${loggedInUser.name.split(' ')[0]}/orders`} 
+                            onClick={handleOrder} 
+                            className='text-decoration-none text-success ml-3 mb-5 pb-5'>
+                            <FontAwesomeIcon className="mr-1" icon={faCartPlus} /> Order</NavLink>
                         </div>
+
                         <div className='mt-2'>
-                            <Link onClick={handleServiceList} className='text-decoration-none text-dark ml-3 mb-5 pb-5'><FontAwesomeIcon className="mr-1" icon={faHdd} /> Service List</Link>
+                            <NavLink  
+                            activeClassName='nav-active'
+                            to={`/dashboard/${loggedInUser.name.split(' ')[0]}/orders`}
+                            onClick={handleServiceList} 
+                            className='text-decoration-none text-success ml-3 mb-5 pb-5'>
+                            <FontAwesomeIcon className="mr-1" icon={faHdd} /> Service List</NavLink>
                         </div>
-                        <div onClick={handleReview} className='mt-2'>
-                            <Link className='text-decoration-none text-dark ml-3 mb-5 pb-5'><FontAwesomeIcon className="mr-1" icon={faCommentAlt} /> Review</Link>
+                        
+                        <div className='mt-2'>
+                            <NavLink 
+                            activeClassName='nav-active'
+                            to={`/dashboard/${loggedInUser.name.split(' ')[0]}/review`}
+                            onClick={handleReview}  
+                            className='text-decoration-none text-success ml-3 mb-5 pb-5'>
+                            <FontAwesomeIcon className="mr-1" icon={faCommentAlt} /> Review</NavLink>
                         </div>
                     </div>}
 
                     {/* admin portion */}
                     {isAdmin && <div>
                         <div className='mt-5'>
-                            <NavLink to='/dashboard' activeClassName='nav-active' onClick={handleServiceList} className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faHdd} /> Service List</NavLink>
+                            <NavLink to='/dashboard/order' activeClassName='nav-active' onClick={handleServiceList} className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faHdd} /> Service List</NavLink>
                         </div>
                         <div className='mt-2'>
-                            <NavLink to='/dashboard' activeClassName='nav-active' onClick={handleAddService} className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faPlus} /> Add Service</NavLink>
+                            <NavLink to='/dashboard/addService' activeClassName='nav-active' onClick={handleAddService} className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faPlus} /> Add Service</NavLink>
                         </div>
                         <div onClick={handleAdmin} className='mt-2'>
-                            <NavLink to='/dashboard' activeClassName='nav-active' className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faUserPlus} /> Make Admin</NavLink>
+                            <NavLink to='/dashboard/makeAdmin' activeClassName='nav-active' className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faUserPlus} /> Make Admin</NavLink>
                         </div>
                     </div>}
                 </div>

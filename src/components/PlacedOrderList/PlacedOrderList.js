@@ -41,7 +41,7 @@ const PlacedOrderList = ({ placedOrder }) => {
                     <th scope="row">{placedOrder.name}</th>
                     <td>{placedOrder.email}</td>
                     <td>{placedOrder.service}</td>
-                    <td>{placedOrder.description}</td>
+                    <td>{placedOrder.projectDetails}</td>
                     <td>
                         <form>
                             <select
