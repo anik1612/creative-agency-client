@@ -15,8 +15,6 @@ const Services = () => {
         })
     }, [])
 
-    console.log(allService)
-
     return (
         <div className='container'>
             <h3 className='text-center mb-5' style={{ fontWeight: '600' }}>Provide awesome<span style={{ color: '#7AB259' }}> services</span></h3>

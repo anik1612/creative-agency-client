@@ -10,9 +10,7 @@ import { UserContext } from '../../App';
 
 const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
-    console.log(loggedInUser);
-
+    
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/dashboard" } };
