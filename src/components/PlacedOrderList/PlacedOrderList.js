@@ -35,32 +35,29 @@ const PlacedOrderList = ({ placedOrder }) => {
     }, [selectedOption])
 
     return (
-        <div className='row mt-1 mx-2 mb-2 pt-2 px-1 pb-1 border-bottom bg-white'>
-            <div className='col-md-2'>
-                <p>{placedOrder.name}</p>
-            </div>
-            <div className='col-md-4 p-0'>
-                <p>{placedOrder.email}</p>
-            </div>
-            <div className='col-md-3 p-0'>
-                <p>{placedOrder.service}</p>
-            </div>
-            <div className='col-md-2 p-0'>
-                <p>{placedOrder.projectDetails}</p>
-            </div>
-            <div className='col-md-1 p-0'>
-                <form>
-                    <select
-                        value={selectedOption}
-                        onChange={e => setSelectedOption(e.target.value)}
-                        className={`text-${color} border-0`} name="status">
-                        <option value="pending">pending</option>
-                        <option value="on going">on going</option>
-                        <option value="done">done</option>
-                    </select>
-                </form>
-            </div>
-        </div>
+        <>
+            <tbody>
+                <tr className='bg-white'>
+                    <th scope="row">{placedOrder.name}</th>
+                    <td>{placedOrder.email}</td>
+                    <td>{placedOrder.service}</td>
+                    <td>{placedOrder.description}</td>
+                    <td>
+                        <form>
+                            <select
+                                value={selectedOption}
+                                onChange={e => setSelectedOption(e.target.value)}
+                                className={`text-${color} bg-dark border rounded p-2 font-weight-bold`} name="status">
+                                <option value="pending">pending</option>
+                                <option value="on going">on going</option>
+                                <option value="done">done</option>
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </>
+
     );
 };
 

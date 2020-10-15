@@ -51,7 +51,7 @@ const Order = () => {
                             <p className='text-danger mb-0'>{errors.price && '* This field is required'}</p>
                         </div>
 
-                        <div className='col-md-5 px-0'>
+                        <div className='col-md-5 px-0 mb-2'>
                             <div className="button-wrapper">
                                 <span className="label">
                                     <img src={uploadIcon} alt="upload-icon" /> Upload project File

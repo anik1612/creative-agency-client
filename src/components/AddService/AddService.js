@@ -38,7 +38,7 @@ const AddService = () => {
 
                 <div className='col-md-7'>
                     <label for='name'>Service Title</label>
-                    <input className='form-control mb-2' type="text" placeholder="Service title" name="taskName" ref={register({ required: true, maxLength: 80 })} />
+                    <input className='form-control mb-1' type="text" placeholder="Service title" name="taskName" ref={register({ required: true, maxLength: 80 })} />
                     <p className='text-danger mb-0'>{errors.taskName && '* This field is required'}</p>
                 </div>
 
@@ -53,7 +53,7 @@ const AddService = () => {
                 </div>
 
                 <div className='col-md-7'>
-                    <div className="form-group">
+                    <div className="form-group mt-3">
                         <label for="Textarea">Description</label>
                         <textarea name="description" placeholder="Enter Description" className="form-control" id="Textarea" rows="4" ref={register({ required: true })} ></textarea>
                         <p className='text-danger mb-0'>{errors.description && '* This field is required'}</p>

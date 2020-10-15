@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import brandImg from '../../images/logos/logo.png'
-import { Link, useHistory } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus, faCommentAlt, faHdd, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faCartPlus, faCommentAlt, faHdd, faPlus, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { UserContext } from '../../App';
 import Order from '../../components/Order/Order';
 import ServiceList from '../../components/ServiceList/ServiceList';
 import Review from '../../components/Review/Review';
 import MakeAdmin from '../../components/MakeAdmin/MakeAdmin';
 import AddService from '../../components/AddService/AddService';
+import './Dashboard.css'
 
 const Dashboard = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
@@ -47,7 +48,7 @@ const Dashboard = () => {
         setIsReview(false)
         setIsMakeAdmin(false)
         setIsAddService(false)
-        history.push(`/dashboard/${loggedInUser.name.split(' ')[0]}/placedOrders`)
+        history.push(`/dashboard/${loggedInUser.name.split(' ')[0]}/orders`)
     }
 
     const handleReview = () => {
@@ -65,7 +66,7 @@ const Dashboard = () => {
         setIsServiceList(false)
         setIsAddService(false)
         setIsMakeAdmin(true)
-        history.push(`/admin/makeAdmin`)
+        history.push(`/dashboard/makeAdmin`)
     }
 
     const handleAddService = () => {
@@ -74,7 +75,7 @@ const Dashboard = () => {
         setIsServiceList(false)
         setIsAddService(true)
         setIsMakeAdmin(false)
-        history.push(`/admin/addService`)
+        history.push(`/dashboard/addService`)
     }
 
     return (
@@ -102,28 +103,27 @@ const Dashboard = () => {
                     {/* admin portion */}
                     {isAdmin && <div>
                         <div className='mt-5'>
-                            <Link onClick={handleServiceList} className='text-decoration-none text-dark ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faHdd} /> Service List</Link>
+                            <NavLink to='/dashboard' activeClassName='nav-active' onClick={handleServiceList} className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faHdd} /> Service List</NavLink>
                         </div>
                         <div className='mt-2'>
-                            <Link onClick={handleAddService} className='text-decoration-none text-dark ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faHdd} /> Add Service</Link>
+                            <NavLink to='/dashboard' activeClassName='nav-active' onClick={handleAddService} className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faPlus} /> Add Service</NavLink>
                         </div>
                         <div onClick={handleAdmin} className='mt-2'>
-                            <Link className='text-decoration-none text-dark ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faUserPlus} /> Make Admin</Link>
+                            <NavLink to='/dashboard' activeClassName='nav-active' className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faUserPlus} /> Make Admin</NavLink>
                         </div>
                     </div>}
                 </div>
                 <div className="col-md-9">
                     <div className='d-flex justify-content-between align-items-center'>
-                        <div className='mt-2'>
+                        <div className='mt-md-2 mt-4'>
                             <h4>{isOrder && 'Order'}
                                 {isServiceList && 'Service List'}
                                 {isReview && 'Review'}
                                 {isMakeAdmin && 'Add New Admin'}
-                                {isReview && 'Review'}
                                 {isAddService && 'Add Services'}
                             </h4>
                         </div>
-                        <div className='d-flex align-items-center'>
+                        <div className='d-flex align-items-center mt-md-1 mt-4'>
                             <div className='mr-2'>
                                 <img style={{ height: '43px', borderRadius: '50%' }} src={loggedInUser.image} alt="" />
                             </div>

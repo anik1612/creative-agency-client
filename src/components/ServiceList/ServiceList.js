@@ -19,19 +19,23 @@ const ServiceList = ({ isAdmin }) => {
 
     return (
         <div className='row d-flex justify-content-center'>
+
             {
                 preloader && <Preloader />
             }
+
             {
                 placedOrders.map(placedOrder => {
                     return (
                         <>
                             {/* customer portion */}
-                            {isAdmin && <div className='col-md-5 mb-3 p-5'>
+                            {isAdmin && <div className='col-md-5 mb-1 py-4'>
                                 <div className='bg-white py-2 px-4 border rounded'>
                                     <div className='d-flex justify-content-between align-items-center mb-3'>
                                         <div>
-                                            <img style={{ height: '50px' }} src={placedOrder.src} alt="" />
+                                            {
+                                                placedOrder.src && <img style={{ width: '55px' }} className="mx-auto" src={`data:image/png;base64,${placedOrder.src}`} alt='service-task-img' />
+                                            }
                                         </div>
                                         <div>
                                             {placedOrder.status === 'pending' && <h6 className='bg-danger text-white p-3 border rounded'>{placedOrder.status}</h6>}
@@ -51,36 +55,26 @@ const ServiceList = ({ isAdmin }) => {
                     )
                 })
             }
-            {/* admin portion */}
-            {!isAdmin && <div className='col-md-12 mb-3'>
-                <div className='d-flex flex-column container mb-3 p-0 mt-3'>
-                    <div className='d-flex row border rounded' style={{ background: '#F5F6FA' }}>
-                        <div className='col-md-2 p-1'>
-                            <p className='font-weight-bold pl-4'>Name</p>
-                        </div>
-                        <div className='col-md-4 p-1'>
-                            <p className='font-weight-bold'>Email ID</p>
-                        </div>
-                        <div className='col-md-2 p-1'>
-                            <p className='font-weight-bold'>Service</p>
-                        </div>
-                        <div className='col-md-3 p-1'>
-                            <p className='font-weight-bold text-center'>Project Details</p>
-                        </div>
-                        <div className='col-md-1 p-1'>
-                            <p className='font-weight-bold'>Status</p>
-                        </div>
-                    </div>
 
-                    {/* pass data to placed order list components */}
-                    <div className=''>
-                        {
-                            placedOrders.map(placedOrder => <PlacedOrderList placedOrder={placedOrder} key={placedOrder._id} />)
-                        }
-                    </div>
-                </div>
-            </div>}
-        </div>
+            {/* admin portion */}
+            {!isAdmin && <table class='table table-white my-4 mx-2'>
+                <thead className='thead-dark'>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email ID</th>
+                        <th scope="col">Service</th>
+                        <th scope="col">Project Details</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                {/* pass data to placed order list components */}
+                {
+                    placedOrders.map(placedOrder => <PlacedOrderList placedOrder={placedOrder} key={placedOrder._id} />)
+                }
+            </table>
+            }
+
+        </div >
     );
 };
 
