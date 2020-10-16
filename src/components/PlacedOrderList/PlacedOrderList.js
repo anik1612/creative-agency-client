@@ -30,6 +30,10 @@ const PlacedOrderList = ({ placedOrder }) => {
                     swal('Update', 'Work status update successfully', 'success')
                 }
             })
+            .catch(error => {
+                swal(`Can't Update`, 'Something went wrong', 'error');
+            })
+
     }, [selectedOption])
 
     return (

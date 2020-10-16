@@ -23,7 +23,11 @@ const Footer = () => {
                 swal("Thank You!", "You message send successfully!", "success");
             }
         })
+        .catch(error => {
+            swal('Sorry', 'Something went wrong, try again later', 'error');
+        })
     };
+
     return (
         <div className='footer-container'>
             <div className='container'> 

@@ -19,7 +19,9 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                swal('Good Job', 'New service created successfully!', 'success')
+                if(data){
+                    swal('Good Job', 'New service created successfully!', 'success')
+                }
             })
             .catch(error => {
                 swal('Bad Request', 'Something went wrong', 'error');
@@ -32,7 +34,7 @@ const AddService = () => {
     }
 
     return (
-        <div className='row p-md-5 pt-4'>
+        <div className='row p-md-5'>
 
             <form onSubmit={handleSubmit(onSubmit)} className='row d-flex'>
 

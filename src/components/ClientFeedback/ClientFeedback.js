@@ -14,16 +14,6 @@ const ClientFeedback = () => {
             })
     }, [])
 
-    //  const loadData = () => {
-    //     fetch('https://creative-agency-as.herokuapp.com/insertFeedback', {
-    //         method: 'POST',
-    //         headers: { 
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(feedbacks)
-    //     })
-    // }
-
     return (
         <div className='container'>
             <h3 className='font-weight-bold text-center mb-5 pt-5 pb-3'>Clients <span style={{ color: '#7AB259' }}> Feedback</span></h3>

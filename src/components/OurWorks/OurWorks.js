@@ -19,7 +19,7 @@ const OurWorks = () => {
             <div>
             <h3 className='text-center text-white mb-5 pb-3 pt-5'>Here are some of <span style={{color: '#7AB259'}}> our works</span></h3>
             </div>
-            <div className=''>
+            <div className='carousel-slider'>
                 <Swiper
                     spaceBetween={25}
                     slidesPerView={3}

@@ -23,6 +23,9 @@ const Review = () => {
                     swal('Thank You', 'Review Received!', 'success')
                 }
             })
+            .catch(error => {
+                swal('Error', 'Something went wrong', 'error');
+            })
     };
 
     return (
