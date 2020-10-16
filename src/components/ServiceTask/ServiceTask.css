@@ -1,5 +1,9 @@
-.card:hover{
+.service-card:hover{
     background: linear-gradient(75deg, #FBD062,#ebc158);
     color: black !important;
     box-shadow: 5px 5px 10px grey;
+}
+
+.card:hover{
+    cursor: pointer;
 }

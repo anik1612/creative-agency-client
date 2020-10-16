@@ -19,7 +19,7 @@ const ServiceTask = ({ service }) => {
 
     return (
         <div className='d-flex justify-content-center'>
-            <div className='col-md-3 ml-md-0 ml-5 pl-md-0 pl-5'>
+            <div className='col-md-3 ml-md-0 ml-sm-5 pl-md-0 pl-sm-5 mx-auto'>
                 <animated.div
                     ref={ref}
                     onMouseEnter={() => setHovered(true)}
@@ -62,7 +62,7 @@ const ServiceTask = ({ service }) => {
                         )
                     }}
                 >
-                    <Link to='/dashboard' onClick={() => setSelectedService(service)} className="card py-3 px-1 mb-3 border-0" style={{ width: '18rem', textDecoration: 'none' }}>
+                    <Link to='/dashboard' onClick={() => setSelectedService(service)} className="card service-card py-3 px-1 mb-5 border-0" style={{ width: '18rem', textDecoration: 'none' }}>
                         {
                             service.src && <img style={{ width: '70px' }} className="mx-auto" src={`data:image/png;base64,${service.src}`} alt='service-task-img' />
                         }
