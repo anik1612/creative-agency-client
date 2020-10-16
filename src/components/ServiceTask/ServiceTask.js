@@ -19,7 +19,7 @@ const ServiceTask = ({ service }) => {
 
     return (
         <div className='d-flex justify-content-center'>
-            <div className='col-md-3 ml-md-0 ml-sm-5 pl-md-0 pl-sm-5 mx-auto'>
+            <div className='col-md-3 ml-md-0 ml-sm-0 pl-md-0 pl-sm-0 mx-auto'>
                 <animated.div
                     ref={ref}
                     onMouseEnter={() => setHovered(true)}
