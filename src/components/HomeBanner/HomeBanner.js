@@ -7,6 +7,7 @@ import airbnb from '../../images/logos/airbnb.png'
 import google from '../../images/logos/google.png'
 import netflix from '../../images/logos/netflix.png'
 import uber from '../../images/logos/uber.png'
+import { Link } from 'react-router-dom';
 
 const HomeBanner = () => {
     return (
@@ -26,7 +27,7 @@ const HomeBanner = () => {
                             adipiscing elit. Purus commodo ipsum duis <br />
                             laoreet maecenas. Feugiat
                         </p>
-                            <button className='btn btn-dark text-white px-5 py-2 mb-3'>Hire Us</button>
+                            <Link to='/dashboard' className='btn btn-dark text-white px-5 py-2 mb-3'>Hire Us</Link>
                         </div>
                         <div className="col-md-6">
                             <img className="img-fluid pb-5" src={bannerImg} alt="banner-img" />

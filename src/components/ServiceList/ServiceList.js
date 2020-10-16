@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../App';
 import PlacedOrderList from '../PlacedOrderList/PlacedOrderList';
 import Preloader from '../Preloader/Preloader';
+import './ServiceList.css'
 
 const ServiceList = ({ isAdmin }) => {
     const [placedOrders, setPlacedOrders] = useState([])
@@ -18,7 +19,7 @@ const ServiceList = ({ isAdmin }) => {
     }, [])
 
     return (
-        <div className='row d-flex justify-content-center'>
+        <div className='row'>
 
             {
                 preloader && <Preloader />
@@ -38,9 +39,9 @@ const ServiceList = ({ isAdmin }) => {
                                             }
                                         </div>
                                         <div>
-                                            {placedOrder.status === 'pending' && <h6 className='bg-danger text-white p-3 border rounded'>{placedOrder.status}</h6>}
-                                            {placedOrder.status === 'on going' && <h6 className='bg-warning text-white p-3 border rounded'>{placedOrder.status}</h6>}
-                                            {placedOrder.status === 'done' && <h6 className='bg-success text-white p-3 border rounded'>{placedOrder.status}</h6>}
+                                            {placedOrder.status === 'pending' && <h6 className='bg-pending p-3 border rounded'>{placedOrder.status}</h6>}
+                                            {placedOrder.status === 'on going' && <h6 className='p-3 bg-on-going border rounded'>{placedOrder.status}</h6>}
+                                            {placedOrder.status === 'done' && <h6 className='bg-done p-3 border rounded'>{placedOrder.status}</h6>}
                                         </div>
                                     </div>
                                     <div>

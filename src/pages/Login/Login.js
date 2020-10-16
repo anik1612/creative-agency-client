@@ -25,7 +25,6 @@ const Login = () => {
             .then(result => {
                 // The signed-in user info.
                 const { displayName, email, photoURL } = result.user;
-                console.log(result);
                 const signedInUser = {
                     isSignedIn: true,
                     name: displayName,

@@ -78,7 +78,7 @@ const Dashboard = () => {
 
     return (
         <div className='dashboard-container'>
-            <div className='row px-5 pt-3 mt-3'>
+            <div className='row px-md-5 pt-3 mt-3'>
                 <div className="col-md-2 d-flex flex-column">
                     <div>
                         <Link to='/home'>

@@ -32,7 +32,7 @@ const AddService = () => {
     }
 
     return (
-        <div className='row p-5'>
+        <div className='row p-md-5 pt-4'>
 
             <form onSubmit={handleSubmit(onSubmit)} className='row d-flex'>
 

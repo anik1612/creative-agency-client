@@ -29,7 +29,7 @@ const Order = () => {
     };
 
     return (
-        <div className='row p-5'>
+        <div className='row p-md-5 pt-4'>
             <div className='col-md-8'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input className='form-control mb-2' type="text" placeholder="First name / company's name" defaultValue={loggedInUser.name} name="name" ref={register({ required: true })} />

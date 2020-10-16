@@ -24,7 +24,7 @@ const MakeAdmin = () => {
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='row p-5'>
+                <div className='row p-md-5 pt-4'>
                     <div className='col-md-7 pl-0'>
                         <div className='row'>
                             <div className="col-md-9 pl-0">

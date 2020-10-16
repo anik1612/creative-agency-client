@@ -1,0 +1,14 @@
+.bg-on-going{
+    background-color: #5c4419!important;
+    color: #FFBD3E!important;
+}
+
+.bg-done{
+    background-color: #C6FFE0!important;
+    color: #009444!important;
+}
+
+.bg-pending{
+    background-color: #FFE3E3!important;
+    color: #aa5454!important;
+}
