@@ -16,7 +16,7 @@ const ServiceList = ({ isAdmin }) => {
                 setPlacedOrders(data)
                 setPreloader(false);
             })
-    }, [])
+    }, [loggedInUser.email])
 
     return (
         <div className='row'>

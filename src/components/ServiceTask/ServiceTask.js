@@ -7,6 +7,11 @@ import './ServiceTask.css'
 const ServiceTask = ({ service }) => {
     const [selectedService, setSelectedService] = useContext(SelectedServiceContext);
 
+    const handleServiceLink = () => {
+        setSelectedService(service)
+        sessionStorage.setItem('selectedService', service.taskName);
+    }
+
     //animation 
     const ref = useRef();
     const [isHovered, setHovered] = useState(false);
@@ -62,9 +67,9 @@ const ServiceTask = ({ service }) => {
                         )
                     }}
                 >
-                    <Link to='/dashboard' onClick={() => setSelectedService(service)} className="card service-card py-3 px-1 mb-5 border-0" style={{ width: '18rem', textDecoration: 'none' }}>
+                    <Link to='/dashboard' onClick={handleServiceLink} className="card service-card py-3 px-1 mb-5 border-0" style={{ width: '18rem', textDecoration: 'none' }}>
                         {
-                            service.src && <img style={{ width: '70px' }} className="mx-auto" src={`data:image/png;base64,${service.src}`} alt='service-task-img' />
+                            service.src && <img style={{ width: '70px' }} className="mx-auto service-task-img" src={`data:image/png;base64,${service.src}`} alt='service-task-img' />
                         }
                         {/* <img style={{ width: '70px' }} src={service.src} className="mx-auto" alt="..." /> */}
                         <div className="card-body">

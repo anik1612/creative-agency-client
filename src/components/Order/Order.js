@@ -26,9 +26,6 @@ const Order = () => {
                 swal('Good Job', 'Your Ordered Placed!', 'success')
             }
         })
-        .catch(error => {
-            swal(`Can't place order`, 'Something went wrong', 'error');
-        })
     };
 
     return (
