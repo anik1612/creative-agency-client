@@ -4,7 +4,7 @@ A single page web page where user can pick available service and place their ord
 
 [Live Website](https://creative-agency-as.web.app/) | [Live API Server](https://creative-agency-as.herokuapp.com/) | [Back-end Repository](https://github.com/anik1612/creative-agency-server)
 
-### Feautures
+### Features
 * Full-Stack web app, you have hassle free google sign in method.
 *	An authenticated user can order his/her desired services from our web apps.
 *	Admin Dashboard / User Dashboard. (Role Detection based on email)
