@@ -6,8 +6,8 @@ import uploadIcon from '../../images/logos/upload.png'
 import './Order.css'
 
 const Order = () => {
-    const [selectedService, setSelectedService] = useContext(SelectedServiceContext)
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [selectedService] = useContext(SelectedServiceContext)
+    const [loggedInUser] = useContext(UserContext)
 
     const {description, src} = selectedService
 

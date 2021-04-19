@@ -30,7 +30,7 @@ const Header = () => {
                         <Link to='/home' className="nav-link text-dark">Home <span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item">
-                        <Link to='/portfolio' className="nav-link text-dark">Our Portfolio</Link>
+                        <a href='https://anik-sarker.web.app/' rel="noreferrer" target='_blank' className="nav-link text-dark">Our Portfolio</a>
                     </li>
                     <li className="nav-item">
                         <Link to='/dashboard' className="nav-link text-dark">Dashboard</Link>

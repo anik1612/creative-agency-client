@@ -6,7 +6,7 @@ import './ServiceList.css'
 
 const ServiceList = ({ isAdmin }) => {
     const [placedOrders, setPlacedOrders] = useState([])
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser] = useContext(UserContext)
     const [preloader, setPreloader] = useState(true)
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const ServiceList = ({ isAdmin }) => {
                     return (
                         <>
                             {/* customer portion */}
-                            {isAdmin && <div className='col-md-5 mb-1 py-4'>
+                            {isAdmin === false && <div className='col-md-5 mb-1 py-4'>
                                 <div className='bg-white py-2 px-4 border rounded'>
                                     <div className='d-flex justify-content-between align-items-center mb-3'>
                                         <div>
@@ -58,7 +58,7 @@ const ServiceList = ({ isAdmin }) => {
             }
 
             {/* admin portion */}
-            {!isAdmin && <table class='table table-white my-4 mx-2'>
+            {isAdmin === true && <table class='table table-white my-4 mx-2'>
                 <thead className='thead-dark'>
                     <tr>
                         <th scope="col">Name</th>

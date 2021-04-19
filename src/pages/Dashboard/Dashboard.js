@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import brandImg from '../../images/logos/logo.png'
 import { Link, NavLink, useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartPlus, faCommentAlt, faHdd, faPlus, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faCartPlus, faCommentAlt, faHdd, faMinus, faPlus, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { UserContext } from '../../App';
 import Order from '../../components/Order/Order';
 import ServiceList from '../../components/ServiceList/ServiceList';
@@ -10,15 +10,17 @@ import Review from '../../components/Review/Review';
 import MakeAdmin from '../../components/MakeAdmin/MakeAdmin';
 import AddService from '../../components/AddService/AddService';
 import './Dashboard.css'
+import DeleteService from '../../components/ManageService/DeleteService';
 
 const Dashboard = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-    const [isOrder, setIsOrder] = useState(true)
-    const [isServiceList, setIsServiceList] = useState(false)
+    const [loggedInUser] = useContext(UserContext)
+    const [isOrder, setIsOrder] = useState(false)
+    const [isServiceList, setIsServiceList] = useState(true)
     const [isReview, setIsReview] = useState(false)
     const [isMakeAdmin, setIsMakeAdmin] = useState(false)
-    const [isAdmin, setIsAdmin] = useState(false)
+    const [isAdmin, setIsAdmin] = useState()
     const [isAddService, setIsAddService] = useState(false)
+    const [isDeleteService, setIsDeleteService] = useState(false)
     let history = useHistory();
 
     useEffect(() => {
@@ -29,6 +31,10 @@ const Dashboard = () => {
                     setIsAdmin(true)
                     setIsServiceList(true)
                     setIsOrder(false)
+                } else {
+                    setIsAdmin(false)
+                    setIsServiceList(false)
+                    setIsOrder(true)
                 }
             })
     }, [loggedInUser.email])
@@ -39,6 +45,7 @@ const Dashboard = () => {
         setIsReview(false)
         setIsMakeAdmin(false)
         setIsAddService(false)
+        setIsDeleteService(false)
         history.push()
     }
 
@@ -48,6 +55,7 @@ const Dashboard = () => {
         setIsReview(false)
         setIsMakeAdmin(false)
         setIsAddService(false)
+        setIsDeleteService(false)
         history.push(`/dashboard/${loggedInUser.name.split(' ')[0]}/orders`)
     }
 
@@ -57,6 +65,7 @@ const Dashboard = () => {
         setIsReview(true)
         setIsMakeAdmin(false)
         setIsAddService(false)
+        setIsDeleteService(false)
         history.push(`/dashboard/${loggedInUser.name.split(' ')[0]}/review`)
     }
 
@@ -66,6 +75,7 @@ const Dashboard = () => {
         setIsServiceList(false)
         setIsAddService(false)
         setIsMakeAdmin(true)
+        setIsDeleteService(false)
     }
 
     const handleAddService = () => {
@@ -74,6 +84,16 @@ const Dashboard = () => {
         setIsServiceList(false)
         setIsAddService(true)
         setIsMakeAdmin(false)
+        setIsDeleteService(false)
+    }
+
+    const handleDeleteService = () => {
+        setIsOrder(false)
+        setIsReview(false)
+        setIsServiceList(false)
+        setIsAddService(false)
+        setIsMakeAdmin(false)
+        setIsDeleteService(true)
     }
 
     return (
@@ -86,7 +106,7 @@ const Dashboard = () => {
                         </Link>
                     </div>
                     {/* customer portion */}
-                    {!isAdmin && <div>
+                    {isAdmin === false && <div>
                         <div className="mt-5">
                             <NavLink 
                             activeClassName='nav-active'
@@ -116,14 +136,17 @@ const Dashboard = () => {
                     </div>}
 
                     {/* admin portion */}
-                    {isAdmin && <div>
+                    {isAdmin === true && <div>
                         <div className='mt-5'>
                             <NavLink to='/dashboard/order' activeClassName='nav-active' onClick={handleServiceList} className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faHdd} /> Service List</NavLink>
                         </div>
-                        <div className='mt-2'>
+                        <div className='mt-3'>
                             <NavLink to='/dashboard/addService' activeClassName='nav-active' onClick={handleAddService} className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faPlus} /> Add Service</NavLink>
                         </div>
-                        <div onClick={handleAdmin} className='mt-2'>
+                        <div className='mt-3'>
+                            <NavLink to='/dashboard/deleteService' activeClassName='nav-active' onClick={handleDeleteService} className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faMinus} /> Delete Service</NavLink>
+                        </div>
+                        <div onClick={handleAdmin} className='mt-3'>
                             <NavLink to='/dashboard/makeAdmin' activeClassName='nav-active' className='text-decoration-none text-success ml-3 mb-4'><FontAwesomeIcon className="mr-1" icon={faUserPlus} /> Make Admin</NavLink>
                         </div>
                     </div>}
@@ -136,6 +159,7 @@ const Dashboard = () => {
                                 {isReview && 'Review'}
                                 {isMakeAdmin && 'Add New Admin'}
                                 {isAddService && 'Add Services'}
+                                {isDeleteService && 'Delete Services'}
                             </h4>
                         </div>
                         <div className='d-flex align-items-center mt-md-1 mt-4'>
@@ -151,10 +175,11 @@ const Dashboard = () => {
                     {/* conditional div render */}
                     <div className="mt-4" style={{ backgroundColor: '#F4F7FC' }}>
                         {isOrder && <Order />}
-                        {!isAdmin && isServiceList && <ServiceList isAdmin={true} />}
-                        {isAdmin && isServiceList && <ServiceList isAdmin={false} />}
+                        {isAdmin === true && isServiceList && <ServiceList isAdmin={true} />}
+                        {isAdmin === false && isServiceList && <ServiceList isAdmin={false} />}
                         {isReview && <Review />}
                         {isAddService && <AddService />}
+                        {isDeleteService && <DeleteService />}
                         {isMakeAdmin && <MakeAdmin />}
                     </div>
                 </div>

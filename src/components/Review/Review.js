@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 import { UserContext } from '../../App';
 
 const Review = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    const [loggedInUser] = useContext(UserContext)
     const { register, handleSubmit, errors } = useForm();
 
     const src = loggedInUser.image;

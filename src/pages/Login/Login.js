@@ -9,7 +9,7 @@ import firebaseConfig from './firebase.config';
 import { UserContext } from '../../App';
 
 const Login = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [, setLoggedInUser] = useContext(UserContext);
     
     let history = useHistory();
     let location = useLocation();

@@ -5,7 +5,7 @@ import { SelectedServiceContext } from '../../App';
 import './ServiceTask.css'
 
 const ServiceTask = ({ service }) => {
-    const [selectedService, setSelectedService] = useContext(SelectedServiceContext);
+    const [, setSelectedService] = useContext(SelectedServiceContext);
 
     const handleServiceLink = () => {
         setSelectedService(service)

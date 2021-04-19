@@ -34,7 +34,7 @@ const PlacedOrderList = ({ placedOrder }) => {
                 swal(`Can't Update`, 'Something went wrong', 'error');
             })
 
-    }, [selectedOption])
+    }, [selectedOption, placedOrder._id])
 
     return (
         <>
